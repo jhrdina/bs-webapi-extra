@@ -1,0 +1,14 @@
+{
+  "name": "bs-webapi-extra",
+  "version": "0.1.0",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    },
+    { "dir": "example", "type": "dev" }
+  ],
+  "bs-dependencies": ["bs-webapi"],
+  "suffix": ".bs.js",
+  "refmt": 3
+}

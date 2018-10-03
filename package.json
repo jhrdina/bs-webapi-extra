@@ -1,0 +1,30 @@
+{
+  "name": "bs-webapi-extra",
+  "version": "0.1.0",
+  "description": "Extra Web API implementations: WebCrypto",
+  "main": "index.js",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "pack": "webpack lib/js/example/example.bs.js -o lib/app.js --mode development",
+    "prepare": "npm link bs-platform"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhrdina/bs-webapi-extra.git"
+  },
+  "homepage": "https://github.com/jhrdina/bs-webapi-extra#readme",
+  "bugs": "https://github.com/jhrdina/bs-webapi-extra/issues",
+  "keywords": [
+    "reason",
+    "bucklescript"
+  ],
+  "devDependencies": {
+    "bs-webapi": "^0.12.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1"
+  },
+  "author": "",
+  "license": "MIT"
+}
