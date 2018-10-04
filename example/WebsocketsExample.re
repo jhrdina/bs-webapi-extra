@@ -31,7 +31,16 @@ let run = () => {
   let maybeBtn = document |> Document.getElementById("send-ws-msg-btn");
   switch (maybeBtn) {
   | Some(btn) =>
-    btn |> Element.addClickEventListener(_ => ws->sendString("Hello"))
+    btn
+    |> Element.addClickEventListener(_ =>
+         ws
+         ->sendString(
+             switch (Js.Json.stringifyAny @@ {"type": "offer"}) {
+             | Some(str) => str
+             | None => ""
+             },
+           )
+       )
   | None => ()
   };
 };
