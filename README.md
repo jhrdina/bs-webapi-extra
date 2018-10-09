@@ -1,6 +1,14 @@
-# Basic Reason Template
+# bs-webapi-extra
 
-Hello! This project allows you to quickly get started with Reason and BuckleScript. If you wanted a more sophisticated version, try the `react` template (`bsb -theme react -init .`).
+Playground for implementing various missing Web API bindings for ReasonML/BuckleScript, namely:
+
+- WebRTC
+- IndexedDB
+- WebCrypto (so far only RSASSA-PKCS1-v1_5 and SHA-256 supported)
+- WebSockets
+- Encoding (TextEncoder, TextDecoder)
+
+**DISCLAIMER:** Not all API methods from W3 standards are implemented and functions signatures may change from commit to commit in here. I plan to merge these APIs into the original bs-webapi-incubator as soon as the typical use cases feel comfortable to use.
 
 # Build
 
@@ -18,7 +26,7 @@ npm run start
 
 Examples are compiled during `npm run build`.
 
-Create browser bundle using
+Create a single `app.js` file for browser using
 
 ```
 npm run pack
