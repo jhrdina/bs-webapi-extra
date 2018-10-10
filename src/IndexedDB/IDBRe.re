@@ -196,7 +196,7 @@ module IDBFactory = {
   [@bs.send.pipe: t]
   external deleteDatabase: string => IDBTypesRe.idbOpenDBRequest = "";
   [@bs.send.pipe: t]
-  external open_: (string, int) => IDBTypesRe.idbOpenDBRequest = "";
+  external open_: (string, int) => IDBTypesRe.idbOpenDBRequest = "open";
 };
 
 [@bs.val] [@bs.scope "window"] external indexedDB: IDBTypesRe.idbFactory = "";
