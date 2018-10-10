@@ -6,4 +6,5 @@ module Dom = {
   include WebRTCRe;
   include WebSocketsRe;
   include IDBRe;
+  include NavigatorRe;
 };
