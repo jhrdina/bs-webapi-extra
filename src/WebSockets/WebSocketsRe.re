@@ -47,9 +47,7 @@ module WebSocket = {
   [@bs.set]
   external setOnMessage: (t, WebMessagingRe.MessageEvent.t => unit) => unit =
     "onmessage";
-  [@bs.set]
-  external setOnOpen: (t, Webapi.Dom.Event.t => unit) => unit = "onopen";
-  [@bs.set]
-  external setOnError: (t, Webapi.Dom.Event.t => unit) => unit = "onerror";
+  [@bs.set] external setOnOpen: (t, Dom.event => unit) => unit = "onopen";
+  [@bs.set] external setOnError: (t, Dom.event => unit) => unit = "onerror";
   [@bs.set] external setOnClose: (t, CloseEvent.t => unit) => unit = "onclose";
 };
