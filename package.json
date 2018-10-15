@@ -21,8 +21,10 @@
     "reason",
     "bucklescript"
   ],
+  "dependencies": {
+    "bs-webapi": "^0.12.2"
+  },
   "devDependencies": {
-    "bs-webapi": "^0.12.2",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1"
   },
