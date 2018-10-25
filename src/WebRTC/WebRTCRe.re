@@ -28,14 +28,18 @@ module RTCDataChannel = {
   type t;
   type optionsT;
   [@bs.set]
-  external setOnError: (t, RTCErrorEvent.t => unit) => unit = "onerror";
-  [@bs.set] external setOnOpen: (t, unit => unit) => unit = "onopen";
-  [@bs.set] external setOnClose: (t, unit => unit) => unit = "onclose";
+  external setOnError: (t, option(RTCErrorEvent.t => unit)) => unit =
+    "onerror";
+  [@bs.set] external setOnOpen: (t, option(unit => unit)) => unit = "onopen";
   [@bs.set]
-  external setOnMessage: (t, RTCMessageEvent.t => unit) => unit = "onmessage";
+  external setOnClose: (t, option(unit => unit)) => unit = "onclose";
+  [@bs.set]
+  external setOnMessage: (t, option(RTCMessageEvent.t => unit)) => unit =
+    "onmessage";
   [@bs.send] external send: (t, string) => unit = "send";
+  [@bs.send] external close: t => unit = "";
   [@bs.obj]
-  external makeOptions: (~ordered: bool, ~maxRetransmitTime: float) => optionsT =
+  external makeOptions: (~ordered: bool, ~maxPacketLifeTime: int) => optionsT =
     "";
 };
 
@@ -130,14 +134,16 @@ module RTCPeerConnection = {
   [@bs.new]
   external createWithConfig: RTCConfiguration.t => t = "RTCPeerConnection";
   [@bs.set]
-  external setOnIceCandidate: (t, RTCPeerConnectionIceEvent.t => unit) => unit =
+  external setOnIceCandidate:
+    (t, option(RTCPeerConnectionIceEvent.t => unit)) => unit =
     "onicecandidate";
   [@bs.set]
   external setOnIceConnectionStateChange:
-    (t, RTCIceConnectionStateChangeEvent.t => unit) => unit =
+    (t, option(RTCIceConnectionStateChangeEvent.t => unit)) => unit =
     "oniceconnectionstatechange";
   [@bs.set]
-  external setOnDataChannel: (t, RTCDataChannelEvent.t => unit) => unit =
+  external setOnDataChannel:
+    (t, option(RTCDataChannelEvent.t => unit)) => unit =
     "ondatachannel";
   [@bs.send]
   external addIceCandidate:
