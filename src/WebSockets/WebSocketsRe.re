@@ -43,6 +43,7 @@ module WebSocket = {
   [@bs.send] external sendString: (t, string) => unit = "send";
   [@bs.send]
   external sendArrayBuffer: (t, Js.Typed_array.array_buffer) => unit = "send";
+  [@bs.send] external close: t => unit = "";
 
   [@bs.set]
   external setOnMessage: (t, WebMessagingRe.MessageEvent.t => unit) => unit =
