@@ -20,7 +20,28 @@ module RTCErrorEvent = {
 
 module RTCMessageEvent = {
   type t;
-  [@bs.get] external getData: t => string = "data";
+  type data =
+    | String(string)
+    | ArrayBuffer(Js.Typed_array.ArrayBuffer.t);
+  /* | Blob(Dom.Blob.t)
+     | ArrayBufferView(Js.Typed_array.ArrayBufferView.t) */
+
+  [@bs.get] external getData: t => 'a = "data";
+  let getData: t => option(data) =
+    t => {
+      let data = t |> getData;
+      let isArrayBuffer: 'a => bool = [%raw
+        a => "return a instanceof ArrayBuffer"
+      ];
+      if (Js.typeof(data) == "string") {
+        Some(String(data));
+      } else if (data |> isArrayBuffer) {
+        Some(ArrayBuffer(data));
+      } else {
+        None;
+      };
+    };
+
   [@bs.get] external getMessage: t => string = "message";
 };
 
@@ -36,7 +57,9 @@ module RTCDataChannel = {
   [@bs.set]
   external setOnMessage: (t, option(RTCMessageEvent.t => unit)) => unit =
     "onmessage";
-  [@bs.send] external send: (t, string) => unit = "send";
+  [@bs.send] external sendString: (t, string) => unit = "send";
+  [@bs.send]
+  external sendArrayBuffer: (t, Js.Typed_array.array_buffer) => unit = "send";
   [@bs.send] external close: t => unit = "";
   [@bs.obj]
   external makeOptions: (~ordered: bool, ~maxPacketLifeTime: int) => optionsT =
