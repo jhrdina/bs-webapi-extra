@@ -1,6 +1,5 @@
 {
   "name": "bs-webapi-extra",
-  "version": "0.1.0",
   "sources": [
     {
       "dir": "src",
@@ -8,11 +7,6 @@
     },
     { "dir": "example", "type": "dev" }
   ],
-  "package-specs": {
-    "module": "commonjs",
-    "in-source": true
-  },
   "bs-dependencies": ["bs-webapi"],
-  "suffix": ".bs.js",
   "refmt": 3
 }
