@@ -48,6 +48,25 @@ module RTCMessageEvent = {
 module RTCDataChannel = {
   type t;
   type optionsT;
+  type binaryType =
+    | Blob
+    | ArrayBuffer
+    | Unknown;
+
+  exception UnknownBinaryType;
+
+  let encodeBinaryType =
+    fun
+    | Blob => "blob"
+    | ArrayBuffer => "arraybuffer"
+    | Unknown => "";
+
+  let decodeBinaryType =
+    fun
+    | "blob" => Blob
+    | "arraybuffer" => ArrayBuffer
+    | _ => Unknown;
+
   [@bs.set]
   external setOnError: (t, option(RTCErrorEvent.t => unit)) => unit =
     "onerror";
@@ -64,6 +83,13 @@ module RTCDataChannel = {
   [@bs.obj]
   external makeOptions: (~ordered: bool, ~maxPacketLifeTime: int) => optionsT =
     "";
+
+  [@bs.set] external setBinaryType: (t, string) => unit = "binaryType";
+  let setBinaryType = (t, binaryType) =>
+    setBinaryType(t, binaryType |> encodeBinaryType);
+
+  [@bs.get] external getBinaryType: t => string = "binaryType";
+  let getBinaryType = t => t |> getBinaryType |> decodeBinaryType;
 };
 
 module RTCDataChannelEvent = {
