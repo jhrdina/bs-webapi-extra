@@ -81,7 +81,8 @@ module RTCDataChannel = {
   external sendArrayBuffer: (t, Js.Typed_array.array_buffer) => unit = "send";
   [@bs.send] external close: t => unit = "";
   [@bs.obj]
-  external makeOptions: (~ordered: bool, ~maxPacketLifeTime: int) => optionsT =
+  external makeOptions:
+    (~ordered: bool, ~maxPacketLifeTime: int=?, unit) => optionsT =
     "";
 
   [@bs.set] external setBinaryType: (t, string) => unit = "binaryType";
