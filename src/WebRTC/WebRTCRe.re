@@ -173,9 +173,18 @@ module RTCSessionDescription = {
   [@bs.get] external sdp: t => string = "";
 };
 
+module RTCIceServer = {
+  type t;
+  [@bs.obj]
+  external make:
+    (~urls: string, ~username: string=?, ~credential: string=?, unit) => t =
+    "";
+};
+
 module RTCConfiguration = {
-  type rtcIceServer = {. "urls": string};
-  type t = {. "iceServers": array(rtcIceServer)};
+  type t;
+  [@bs.obj]
+  external make: (~iceServers: array(RTCIceServer.t)=?, unit) => t = "";
 };
 
 module RTCPeerConnection = {
