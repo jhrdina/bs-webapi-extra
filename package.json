@@ -1,7 +1,7 @@
 {
   "name": "bs-webapi-extra",
-  "version": "0.4.0",
-  "description": "Extra Web API bindings for ReasonML: WebCrypto",
+  "version": "0.4.1",
+  "description": "Extra Web API bindings for ReasonML: WebCrypto, WebRTC, IndexedDB, WebSockets, Encoding, ...",
   "main": "index.js",
   "scripts": {
     "build": "bsb -make-world",
