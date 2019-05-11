@@ -1,7 +1,7 @@
 {
   "name": "bs-webapi-extra",
-  "version": "0.3.0",
-  "description": "Extra Web API implementations: WebCrypto",
+  "version": "0.4.0",
+  "description": "Extra Web API bindings for ReasonML: WebCrypto",
   "main": "index.js",
   "scripts": {
     "build": "bsb -make-world",
@@ -19,7 +19,13 @@
   "bugs": "https://github.com/jhrdina/bs-webapi-extra/issues",
   "keywords": [
     "reason",
-    "bucklescript"
+    "bucklescript",
+    "web",
+    "webrtc",
+    "webcrypto",
+    "crypto",
+    "websocket",
+    "indexeddb"
   ],
   "dependencies": {
     "bs-webapi": "^0.12.2"

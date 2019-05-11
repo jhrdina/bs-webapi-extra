@@ -1,3 +1,5 @@
+// Slightly improved version of https://github.com/bsansouci/ReWebRTC
+
 module RTCIceCandidate = {
   type t;
   [@bs.new] external create: unit => t = "RTCIceCandidate";
