@@ -1,6 +1,6 @@
 {
   "name": "bs-webapi-extra",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Extra Web API bindings for ReasonML: WebCrypto, WebRTC, IndexedDB, WebSockets, Encoding, ...",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,7 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "pack": "webpack lib/js/example/example.js -o lib/app.js --mode development",
-    "pack-start": "webpack -w lib/js/example/example.js -o lib/app.js --mode development",
-    "prepare": "npm link bs-platform"
+    "pack-start": "webpack -w lib/js/example/example.js -o lib/app.js --mode development"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
     "bs-webapi": "^0.12.2"
   },
   "devDependencies": {
+    "bs-platform": "^5.0.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1"
   },
